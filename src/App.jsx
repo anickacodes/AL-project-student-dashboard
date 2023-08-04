@@ -1,7 +1,8 @@
 import { useState } from "react";
-import studentData from "./data/data.json"
-import "./App.css"
-import StudentsToRender from "./Components/StudentsToRender";
+import studentData from "./data/data.json";
+import "./App.css";
+
+import StudentsToRenderList from "./Components/StudentsToRenderList";
 
 // import AllStudentCertifications from "./Components/AllStudentCertifications";
 
@@ -13,7 +14,7 @@ import StudentsToRender from "./Components/StudentsToRender";
 //   <img src={eachStudentObj.profilePhoto} alt={`${eachStudentObj.names.preferredName}`} />
 //   <h4>{eachStudentObj.names.preferredName}</h4>
 //   <p>{eachStudentObj.username}</p>
-//   <span>Birthday: {eachStudentObj.dob}</span> <br /> 
+//   <span>Birthday: {eachStudentObj.dob}</span> <br />
 //   Resume: {eachStudentObj.certifications.resume ? <h1>On Track</h1>: <p>Sike</p>}
 //   <a href="">Show More...</a>
 //   </div>)}
@@ -21,22 +22,37 @@ import StudentsToRender from "./Components/StudentsToRender";
 // //  console.log(studentData[0].names)
 //   )
 
+//i actually want this to be in show more ---refactor
+const CohortList = studentData.map(function (e) {
+  return (
+    <div>
+     Here: 
+      {/* {e.cohort.cohortCode === "Winter2026" ? <StudentsToRender cohort={'Winter2026'} /> : <></>} broke my code 🙃 */}
+      {/* {e.cohort.cohortCode === "Winter2026" ? <StudentsToRender key={Winter2026} /> : <></>} this loads on the side of studentstorender */}
 
+      {/* {e.cohort.cohortCode === "Winter2026" ? <h1>Winter2026</h1> : <></>} LOADS TO DOM AS TEXT, OFC BUT I WANT TO ADD IT TO STUDENTSTORENDER -  */}
+
+    </div>
+  );
+});
 
 
 function App() {
   return (
     <>
-    
-    <div>
-      <h1>Student Dashboard</h1>
-    </div>
-    {/* <AllStudentCertifications /> */}
-    <div>
-      <h2>All Students</h2>
-      <p>Total Students "ADD USESTATE FOR dynamic COUNT"</p> <br />
-    </div>
-    <StudentsToRender />
+      <div>
+        <h1>Student Dashboard</h1>
+      </div>
+      {/* <AllStudentCertifications /> */}
+      {CohortList }
+      <div>
+        <h2>All Students</h2>
+        <p>Total Students "ADD USESTATE FOR dynamic COUNT"</p> <br />
+      </div>
+      <StudentsToRenderList 
+    //  eachStudentObj={eachStudentObj}
+      // studentObjToRender={studentObjToRender}
+      />
     </>
   );
 }
