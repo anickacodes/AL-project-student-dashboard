@@ -140,4 +140,6 @@ The following is an example of the application. These images show the applicatio
 
 ******My Changes ****
 
-https://fastidious-cascaron-26a000.netlify.app/
+>https://fastidious-cascaron-26a000.netlify.app/ [Netlify]
+
+>https://trello.com/b/xbkrcU0Z/mod-3-student-dashboard-project [Trello]

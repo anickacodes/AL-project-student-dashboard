@@ -39,13 +39,14 @@ const CohortList = studentData.map(function (e) {
 
 function App() {
   return (
-    <>
-      <div>
+  
+    <main>
+      <div className="dashboard">
         <h1>Student Dashboard</h1>
       </div>
       {/* <AllStudentCertifications /> */}
       {CohortList }
-      <div>
+      <div className="All-Students-Title">
         <h2>All Students</h2>
         <p>Total Students "ADD USESTATE FOR dynamic COUNT"</p> <br />
       </div>
@@ -53,7 +54,8 @@ function App() {
     //  eachStudentObj={eachStudentObj}
       // studentObjToRender={studentObjToRender}
       />
-    </>
+      </main>
+   
   );
 }
 

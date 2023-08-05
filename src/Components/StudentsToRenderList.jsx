@@ -26,11 +26,11 @@ const StudentsToRenderList = () => {
  
 
       return (
-        <>
+       <div className="">
         <IndiviualStudentCard eachStudentObj={eachStudentObj}/>
           
           {/* seeShowMoreOrShowLess ? "Show More...": "Show Less..." */}
-        </>
+          </div>
       );
     }
 

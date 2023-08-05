@@ -22,8 +22,8 @@ const IndiviualStudentCard = ({ eachStudentObj }) => {
 
 
   return (
-    <>
-      <div key={eachStudentObj.id} className="Student">
+   
+      <div key={eachStudentObj.id} className="Student-Card">
         <img
           src={eachStudentObj.profilePhoto}
           alt={`${eachStudentObj.names.preferredName}`}
@@ -63,7 +63,7 @@ const IndiviualStudentCard = ({ eachStudentObj }) => {
           </a>
         </section>
       </div>
-    </>
+    
   );
 };
 
