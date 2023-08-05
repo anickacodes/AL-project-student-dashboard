@@ -1,8 +1,9 @@
 import { useState } from "react";
+import AllStudentCertifications from "./AllStudentCertifications";
 
 const IndiviualStudentCard = ({ eachStudentObj }) => {
-  const [individualShowMore, setIndividualShowMore] = useState(false);
-  console.log("state of show more", individualShowMore)
+  const [individualStudentShowMore, setIndividualStudentShowMore] = useState(false);
+  // console.log("state of show more", individualShowMore)
 
   const [seeShowMoreOrShowLess, setShowMoreOrShowLess] =
     useState("Show More..."); //all share a state here
@@ -17,15 +18,16 @@ const IndiviualStudentCard = ({ eachStudentObj }) => {
   };
 
   function handleShowMoreToggle() {
-    setIndividualShowMore(!individualShowMore)
+    setIndividualStudentShowMore(!individualStudentShowMore)
   }
 
 
   return (
    
-      <div key={eachStudentObj.id} className="Student-Card">
+      <div key={eachStudentObj.id} className="">
         <img
-          src={eachStudentObj.profilePhoto}
+          src={eachStudentObj.profilePhoto} 
+          // COMMENT THIS BACK IN - IT TAKES TIME TO LOAD THE PAGE UNFORTUNATELY
           alt={`${eachStudentObj.names.preferredName}`}
         />
         <h4>{eachStudentObj.names.preferredName}</h4>
@@ -33,7 +35,7 @@ const IndiviualStudentCard = ({ eachStudentObj }) => {
           <em>{eachStudentObj.username}</em>
         </p>
         <span>Birthday: {formatDate(eachStudentObj.dob)}</span> <br />
-        <section>
+        {/* <section>
           Resume:{" "}
           {eachStudentObj.certifications.resume ? (
             <h5>On Track: ✅</h5>
@@ -59,9 +61,19 @@ const IndiviualStudentCard = ({ eachStudentObj }) => {
             }}
           >
             {" "}
-            {individualShowMore ?  "Show Less ..." :  "Show More ..." }
+            {individualStudentShowMore ?  "Show Less ..." :  "Show More ..." }
           </a>
-        </section>
+        </section> */}
+        <AllStudentCertifications />
+        <a
+        onClick={(syntheticE) => {
+            // individualShowMore(!setIndividualShowMore)
+          handleShowMoreToggle();
+        }}
+      >
+        {" "}
+        {individualStudentShowMore ?  "Show Less ..." :  "Show More ..." }
+      </a>
       </div>
     
   );

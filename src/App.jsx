@@ -2,7 +2,7 @@ import { useState } from "react";
 import studentData from "./data/data.json";
 import "./App.css";
 
-import StudentsToRenderList from "./Components/StudentsToRenderList";
+import StudentsToRenderList from "./Components/ListOfStudentsToRender";
 
 // import AllStudentCertifications from "./Components/AllStudentCertifications";
 

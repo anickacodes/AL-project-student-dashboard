@@ -26,7 +26,7 @@ const StudentsToRenderList = () => {
  
 
       return (
-       <div className="">
+       <div className="Student-Card">
         <IndiviualStudentCard eachStudentObj={eachStudentObj}/>
           
           {/* seeShowMoreOrShowLess ? "Show More...": "Show Less..." */}
