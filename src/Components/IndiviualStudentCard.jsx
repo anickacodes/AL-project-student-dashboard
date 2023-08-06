@@ -1,12 +1,17 @@
 import { useState } from "react";
 import AllStudentCertifications from "./AllStudentCertifications";
+import OneOneOneSection from "./OneOneOneSection";
 
 const IndiviualStudentCard = ({ eachStudentObj }) => {
   const [individualStudentShowMore, setIndividualStudentShowMore] = useState(false);
   // console.log("state of show more", individualShowMore)
 
   const [seeShowMoreOrShowLess, setShowMoreOrShowLess] =
-    useState("Show More..."); //all share a state here
+    useState(false); //all share a state here
+
+  const [showOneOnOne, setShowOneOnOne] = useState("Show More...")  
+// console.log(showOneOnOne)
+
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -20,7 +25,12 @@ const IndiviualStudentCard = ({ eachStudentObj }) => {
   function handleShowMoreToggle() {
     setIndividualStudentShowMore(!individualStudentShowMore)
   }
-
+function showOneOnOneSection() {
+if (seeShowMoreOrShowLess === false){
+  return (<OneOneOneSection />)
+}
+return {showOneOnOne}
+}
 
   return (
    
@@ -72,7 +82,7 @@ const IndiviualStudentCard = ({ eachStudentObj }) => {
         }}
       >
         {" "}
-        {individualStudentShowMore ?  "Show Less ..." :  "Show More ..." }
+        {individualStudentShowMore ?  {showOneOnOneSection} :  "Show More ..." }
       </a>
       </div>
     
