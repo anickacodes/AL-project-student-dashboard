@@ -36,7 +36,7 @@ return {showOneOnOne}
    
       <div key={eachStudentObj.id} className="">
         <img
-          src={eachStudentObj.profilePhoto} 
+          // src={eachStudentObj.profilePhoto} 
           // COMMENT THIS BACK IN - IT TAKES TIME TO LOAD THE PAGE UNFORTUNATELY
           alt={`${eachStudentObj.names.preferredName}`}
         />

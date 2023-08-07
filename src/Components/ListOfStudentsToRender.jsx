@@ -6,35 +6,23 @@ import IndiviualStudentCard from "./IndiviualStudentCard";
 
 
 
-const StudentsToRenderList = () => {
+const ListOfStudentsToRender = () => {
 
   const [areDetailsShowing, setAreDetailsShowing] = useState(false);
-
+//shouldnt this be the 1-1 section ...
   // console.log("state of toggle", areDetailsShowing);
 
-
-  //   const date = new Date(dateString);
-  //   return date.toLocaleDateString("en-us", {
-  //     month: "long",
-  //     day: "numeric",
-  //     year: "numeric",
-  //   });
-  // };
-
   const renderAllStudents = studentData.map(
-    (eachStudentObj) => {
- 
+    (eachStudentObj) => 
 
-      return (
+      (
        <div className="Student-Card">
         <IndiviualStudentCard eachStudentObj={eachStudentObj}/>
-          
-          {/* seeShowMoreOrShowLess ? "Show More...": "Show Less..." */}
           </div>
-      );
-    }
+      )
+    
 
-  );
+  )
   return renderAllStudents;
 };
-export default StudentsToRenderList;
+export default ListOfStudentsToRender;
