@@ -1,6 +1,6 @@
 import { useState } from "react";
 import AllStudentCertifications from "./AllStudentCertifications";
-import OneOneOneSection from "./OneOneOneSection";
+// import StudentDetailsOpened from "./StudentDetailsOpened.jsx";
 
 const IndiviualStudentCard = ({ eachStudentObj }) => {
   const [individualStudentShowMore, setIndividualStudentShowMore] = useState(false);
@@ -11,6 +11,12 @@ const IndiviualStudentCard = ({ eachStudentObj }) => {
 
   const [showOneOnOne, setShowOneOnOne] = useState("Show More...")  
 // console.log(showOneOnOne)
+
+
+
+
+
+
 
 
   const formatDate = (dateString) => {
@@ -25,12 +31,12 @@ const IndiviualStudentCard = ({ eachStudentObj }) => {
   function handleShowMoreToggle() {
     setIndividualStudentShowMore(!individualStudentShowMore)
   }
-function showOneOnOneSection() {
-if (seeShowMoreOrShowLess === false){
-  return (<OneOneOneSection />)
-}
-return {showOneOnOne}
-}
+// function showOneOnOneSection() {
+// if (seeShowMoreOrShowLess === false){
+//   // return (<StudentDetailsOpened />)
+// }
+// return {showOneOnOne}
+// }
 
   return (
    
@@ -45,6 +51,7 @@ return {showOneOnOne}
           <em>{eachStudentObj.username}</em>
         </p>
         <span>Birthday: {formatDate(eachStudentObj.dob)}</span> <br />
+        <div><strong>Cohort Start Date : {eachStudentObj.cohort.cohortStartDate}</strong> </div>
         {/* <section>
           Resume:{" "}
           {eachStudentObj.certifications.resume ? (
@@ -74,6 +81,7 @@ return {showOneOnOne}
             {individualStudentShowMore ?  "Show Less ..." :  "Show More ..." }
           </a>
         </section> */}
+    
         <AllStudentCertifications />
         <a
         onClick={(syntheticE) => {
@@ -82,7 +90,11 @@ return {showOneOnOne}
         }}
       >
         {" "}
-        {individualStudentShowMore ?  {showOneOnOneSection} :  "Show More ..." }
+        {/* {individualStudentShowMore ?  {showOneOnOneSection} :  "Show More ..." } */}
+        {individualStudentShowMore ?  
+       <h2>yolo</h2>
+         :
+           "Show More ..." }
       </a>
       </div>
     

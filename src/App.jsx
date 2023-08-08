@@ -4,6 +4,9 @@ import "./App.css";
 
 import StudentsToRenderList from "./Components/ListOfStudentsToRender";
 import CohortList from "./Components/CohortList";
+import StudentDetailsOpened from "./Components/StudentDetailsOpened.jsx";
+import ListOfStudentsToRender from "./Components/ListOfStudentsToRender";
+// import StudentDetailsOpened from "./Components/StudentDetailsOpened.jsx";
 
 // import AllStudentCertifications from "./Components/AllStudentCertifications";
 
@@ -41,22 +44,26 @@ import CohortList from "./Components/CohortList";
 
 
 function App() {
+
+  const [totalCount, setTotalCount] = useState(studentData.length)
+  console.log("um", totalCount)
+
   return (
   
     <main>
       <div className="dashboard">
-        <h1>Student Dashboard</h1>
+       {/* <header><h1>Student Dashboard</h1></header>  */}
       </div>
+      {/* <StudentDetailsOpened  /> */}
       {/* <AllStudentCertifications /> */}
-      <CohortList studentData={{studentData}}/>
+      <StudentDetailsOpened />
+      <CohortList studentData={studentData}/>
       <div className="All-Students-Title">
         <h2>All Students</h2>
-        <p>Total Students "ADD USESTATE FOR dynamic COUNT"</p> <br />
+        <p>Total Students </p> <br />
+        <ListOfStudentsToRender totalCount={totalCount} setTotalCount={setTotalCount}/>
       </div>
-      <StudentsToRenderList 
-    //  eachStudentObj={eachStudentObj}
-      // studentObjToRender={studentObjToRender}
-      />
+      {/* <StudentsToRenderList/> */}
       </main>
    
   );

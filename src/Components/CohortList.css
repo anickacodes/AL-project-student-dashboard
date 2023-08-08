@@ -1,3 +1,10 @@
+
+.cohort-date {
+    display: grid;
+    grid-template-rows: 20px;
+}
+
+
 #winter26Date, #winter25Date {
     color: purple;
 

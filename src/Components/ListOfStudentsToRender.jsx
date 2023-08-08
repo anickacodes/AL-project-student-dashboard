@@ -17,7 +17,8 @@ const ListOfStudentsToRender = () => {
 
       (
        <div className="Student-Card">
-        <IndiviualStudentCard eachStudentObj={eachStudentObj}/>
+     
+        <IndiviualStudentCard eachStudentObj={eachStudentObj} />
           </div>
       )
     
