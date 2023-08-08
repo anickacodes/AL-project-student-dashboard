@@ -4,6 +4,7 @@ import studentData from "../data/data.json";
 const AllStudentCertifications = () => {
 
   const studentCertifications = studentData.map((eachStudentCert) => {
+    
     return(   <section>
       Resume:{" "}
       {eachStudentCert.certifications.resume ? (
@@ -37,7 +38,18 @@ const AllStudentCertifications = () => {
   });
 
   return (
+    <>
     <h2>I want to return each students certifications in the Show More tag --- not all certifications in each student</h2>
+    {/* <a
+    onClick={(syntheticE) => {
+        // individualShowMore(!setIndividualShowMore)
+      handleShowMoreToggle();
+    }}
+  >
+    {" "}
+    {individualStudentShowMore ?  "Show Less ..." :  "Show More ..." }
+  </a> */}
+  </>
   );
 };
 

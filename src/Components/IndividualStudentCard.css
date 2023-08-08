@@ -1,0 +1,8 @@
+.Student-Card {
+    /* align-items: flex-end;
+    position: relative;
+    float: right; */
+    border: 4px solid rgb(32, 2, 11);
+    background-color: #66c2ff5c;
+    padding: 3px;
+}

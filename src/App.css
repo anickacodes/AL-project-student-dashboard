@@ -18,13 +18,8 @@ header {
     text-align: center;
 }
 
-.Student-Card {
-    align-items: flex-end;
-    position: relative;
-    float: right;
-    grid-template-columns: 20px;
-    border: 5px solid rgb(32, 2, 11);
-    background-color: #66c2ff5c;
-    padding-left: 3px;
-}
 
+
+span {
+    color: blue
+}

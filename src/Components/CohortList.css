@@ -1,9 +1,14 @@
 
-.cohort-date {
+/* .cohort-date {
     display: grid;
     grid-template-rows: 20px;
-}
+}  */
 
+
+#class-list{
+    /* display: grid; */
+    /* grid-template-rows: */
+}
 
 #winter26Date, #winter25Date {
     color: purple;

@@ -14,14 +14,14 @@ const ListOfStudentsToRender = () => {
 
   const renderAllStudents = studentData.map(
     (eachStudentObj) => 
-
+    
       (
        <div className="Student-Card">
      
         <IndiviualStudentCard eachStudentObj={eachStudentObj} />
           </div>
       )
-    
+
 
   )
   return renderAllStudents;

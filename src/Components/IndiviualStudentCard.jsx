@@ -1,21 +1,15 @@
 import { useState } from "react";
 import AllStudentCertifications from "./AllStudentCertifications";
-// import StudentDetailsOpened from "./StudentDetailsOpened.jsx";
+import "./IndividualStudentCard.css"
 
 const IndiviualStudentCard = ({ eachStudentObj }) => {
   const [individualStudentShowMore, setIndividualStudentShowMore] = useState(false);
   // console.log("state of show more", individualShowMore)
 
-  const [seeShowMoreOrShowLess, setShowMoreOrShowLess] =
-    useState(false); //all share a state here
+  // const [seeShowMoreOrShowLess, setShowMoreOrShowLess] = useState(false); //all share a state here
 
   const [showOneOnOne, setShowOneOnOne] = useState("Show More...")  
 // console.log(showOneOnOne)
-
-
-
-
-
 
 
 
@@ -31,16 +25,15 @@ const IndiviualStudentCard = ({ eachStudentObj }) => {
   function handleShowMoreToggle() {
     setIndividualStudentShowMore(!individualStudentShowMore)
   }
-// function showOneOnOneSection() {
-// if (seeShowMoreOrShowLess === false){
-//   // return (<StudentDetailsOpened />)
-// }
-// return {showOneOnOne}
-// }
+
+
+  function showingDetails () {
+    setShowOneOnOne(!showOneOnOne)
+  }
 
   return (
    
-      <div key={eachStudentObj.id} className="">
+      <div key={eachStudentObj.id} className="Student-Card">
         <img
           // src={eachStudentObj.profilePhoto} 
           // COMMENT THIS BACK IN - IT TAKES TIME TO LOAD THE PAGE UNFORTUNATELY
@@ -82,7 +75,7 @@ const IndiviualStudentCard = ({ eachStudentObj }) => {
           </a>
         </section> */}
     
-        <AllStudentCertifications />
+        {/* <AllStudentCertifications /> */}
         <a
         onClick={(syntheticE) => {
             // individualShowMore(!setIndividualShowMore)
@@ -94,7 +87,7 @@ const IndiviualStudentCard = ({ eachStudentObj }) => {
         {individualStudentShowMore ?  
        <h2>yolo</h2>
          :
-           "Show More ..." }
+         showOneOnOne}
       </a>
       </div>
     

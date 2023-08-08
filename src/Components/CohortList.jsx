@@ -1,103 +1,86 @@
 import studentData from "../data/data.json";
 import "./CohortList.css";
 
-const getCohortDate = (cohortCode) => {
-  switch (cohortCode) {
-    case "Winter2026":
-      return (
-        <p id="winter26Date">
-          <strong>Winter 2026</strong>{" "}
-        </p>
-      );
-    case "Spring2026":
-      return (
-        <p id="spring26Date">
-          <strong>Spring 2026</strong>
-        </p>
-      );
-    case "Summer2026":
-      return (
-        <p id="summer26Date">
-          <strong>Summer 2026</strong>
-        </p>
-      );
-    case "Fall2026":
-      return (
-        <p id="fall26Date">
-          <strong>Fall 2026</strong>
-        </p>
-      );
-    case "Winter2025":
-      return (
-        <p id="winter25Date">
-          <strong>Winter 2025</strong>
-        </p>
-      );
-    case "Spring2025":
-      return (
-        <p id="spring25Date">
-          <strong>Spring 2025</strong>
-        </p>
-      );
-    case "Summer2025":
-      return (
-        <p id="summer25Date">
-          <strong>Summer 2025</strong>
-        </p>
-      );
-    case "Fall2025":
-      return (
-        <p id="fall25Date">
-          <strong>Fall 2025</strong>
-        </p>
-      );
-    default:
-      return <></>;
-  }
-};
+// const getCohortDate = (cohortCode) => {
+//   switch (cohortCode) {
+//     case "Winter2026":
+//       return (
+//         <p id="winter26Date">
+//           <strong>Winter 2026</strong>{" "}
+//         </p>
+//       );
+//     case "Spring2026":
+//       return (
+//         <p id="spring26Date">
+//           <strong>Spring 2026</strong>
+//         </p>
+//       );
+//     case "Summer2026":
+//       return (
+//         <p id="summer26Date">
+//           <strong>Summer 2026</strong>
+//         </p>
+//       );
+//     case "Fall2026":
+//       return (
+//         <p id="fall26Date">
+//           <strong>Fall 2026</strong>
+//         </p>
+//       );
+//     case "Winter2025":
+//       return (
+//         <p id="winter25Date">
+//           <strong>Winter 2025</strong>
+//         </p>
+//       );
+//     case "Spring2025":
+//       return (
+//         <p id="spring25Date">
+//           <strong>Spring 2025</strong>
+//         </p>
+//       );
+//     case "Summer2025":
+//       return (
+//         <p id="summer25Date">
+//           <strong>Summer 2025</strong>
+//         </p>
+//       );
+//     case "Fall2025":
+//       return (
+//         <p id="fall25Date">
+//           <strong>Fall 2025</strong>
+//         </p>
+//       );
+//     default:
+//       return <></>;
+//   }
+// };
 
-const CohortList = () => {
-//   const [studentArr, setStudentArr] = useState(studentData);
+// const CohortList = () => {
+// //   const [studentArr, setStudentArr] = useState(studentData);
 
-//   const classTitle = () => {};
+// //   const classTitle = () => {};
 
-  const renderAllStudentsByCohort = studentData.map((eachStudentObj) => {
-    // console.log(e.cohort.cohortCode)
-    const cohortDate = getCohortDate(eachStudentObj.cohort.cohortCode);
+//   const renderAllStudentsByCohort = studentData.map((eachStudentObj) => {
+//     // console.log(e.cohort.cohortCode)
+//     const cohortDate = getCohortDate(eachStudentObj.cohort.cohortCode);
 
-    // console.log(cohortDate)
-//create an array where titles match  -- *let this be cuz it's easier *
+//     // console.log(cohortDate)
+// //create an array where titles match  -- *let this be cuz it's easier *
 
-//POJO - start empty object, accumulate based on "cohortDate" [maps - GO LOOK IT UP ]
+// //POJO - start empty object, accumulate based on "cohortDate" [maps - GO LOOK IT UP ]
 
+//  return (
+//       <div className="cohort-date">
+//         Here:
+//         {cohortDate}
+//       </div>
+//     );
+//   });
+//   return renderAllStudentsByCohort;
+// };
 
- return (
-      <div className="cohort-date">
-        Here:
-        {cohortDate}
-      </div>
-    );
-  });
-  return renderAllStudentsByCohort;
-};
-const StudentDetailsOpened = () => {
-
-
-    return (
-      <section>
-    <a href="#"> <h2>All Students List </h2> </a>
-    <a href="#"> <h2>Winter 2026 </h2> </a>
-    <a href="#"> <h2>Spring 2026 </h2> </a>
-    <a href="#"> <h2>Summer 2026 </h2> </a>
-    <a href="#"> <h2>Spring 2026 </h2> </a>
-    <a href="#"> <h2>Winter 2025 </h2> </a>
-    <a href="#"> <h2>Spring 2025 </h2> </a>
-    <a href="#"> <h2>Summer 2025 </h2> </a>
-    <a href="#"> <h2>Fall 2025 </h2> </a>
-    </section>
-    )
-}
-export default CohortList;
+// export default CohortList;
 
 /**
  * i want to group them "the names of the cohort dates" if their name matches .......
@@ -118,3 +101,100 @@ export default CohortList;
         // {e.cohort.cohortCode === "Fall2025" ? <p id="fall25Date"><strong>Fall2025</strong></p> : <></>} */
 
 /* An extra E/mpty here is returning --- why */
+
+const CohortList = ({ setStudentArray }) => {
+  const classCodeSelection = (se) => {
+    console.log( se)
+    if (se === "All Students") {
+      setStudentArray(studentData);
+    } else {
+      const filteredStudents = studentData.filter((eachStudent) => {
+        if (
+          se.replace(" ", "") === eachStudent.cohort.cohortCode
+        ) {
+          
+          return eachStudent;
+        }
+      });
+      console.log(filteredStudents);
+      setStudentArray(filteredStudents);
+    }
+   
+  };
+
+  return (
+    <section id="class-list">
+      <a href="#">
+        {" "}
+        <h2
+          onClick={(syntheticE) => {
+            classCodeSelection(syntheticE.target.innerText);
+          }}
+        >
+          All Students List{" "}
+        </h2>{" "}
+      </a>
+      <a href="#">
+        {" "}
+        <h2
+          onClick={(syntheticE) => {
+            classCodeSelection(syntheticE.target.innerText);
+          }}
+        >
+          Winter 2026{" "}
+        </h2>{" "}
+      </a>
+      <a href="#">
+        {" "}
+        <h2
+          onClick={(syntheticE) => {
+            classCodeSelection(syntheticE.target.innerText);
+          }}
+        >
+          Spring 2026{" "}
+        </h2>{" "}
+      </a>
+      <a href="#">
+        {" "}
+        <h2 onClick={(syntheticE) => {
+            classCodeSelection(syntheticE.target.innerText);
+          }}>Summer 2026 </h2>{" "}
+      </a>
+      <a href="#">
+        {" "}
+        <h2 onClick={(syntheticE) => {
+            classCodeSelection(syntheticE.target.innerText);
+          }}>Spring 2026 </h2>{" "}
+      </a>
+      <a href="#">
+        {" "}
+        <h2 onClick={(syntheticE) => {
+            classCodeSelection(syntheticE.target.innerText);
+          }}>Winter 2025 </h2>{" "}
+      </a>
+      <a href="#">
+        {" "}
+        <h2 onClick={(syntheticE) => {
+            classCodeSelection(syntheticE.target.innerText);
+          }}>Spring 2025 </h2>{" "}
+      </a>
+      <a href="#">
+        {" "}
+        <h2 onClick={(syntheticE) => {
+            classCodeSelection(syntheticE.target.innerText);
+          }}>Summer 2025 </h2>{" "}
+      </a>
+      <a href="#">
+        {" "}
+        <h2 onClick={(syntheticE) => {
+            classCodeSelection(syntheticE.target.innerText);
+          }}>Fall 2025 </h2>{" "}
+      </a>
+    </section>
+  );
+};
+
+//as we click, filter out what matches and map that as a a return
+//useState - rerenders
+
+export default CohortList;
