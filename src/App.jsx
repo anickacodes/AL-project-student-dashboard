@@ -5,6 +5,8 @@ import "./App.css";
 import CohortList from "./Components/CohortList";
 import ListOfStudentsToRender from "./Components/ListOfStudentsToRender";
 
+// import AllStudentCertifications from "./Components/AllStudentCertifications";
+
 
 function App() {
   const [totalCount, setTotalCount] = useState(studentData.length);
@@ -22,12 +24,12 @@ const [studentArray, setStudentArray] = useState(studentData)
      
       {/* <StudentDetailsOpened  /> */}
       {/* <AllStudentCertifications /> */}
-      {/* <StudentDetailsOpened /> */}
+    
       <CohortList studentArray={studentArray} setStudentArray={setStudentArray} />
       <div className="All-Students-Title">
         <h2>All Students</h2>
         <p>
-          Total Students <span> {totalCount}</span>
+          Total Students <span> {totalCount} </span>
         </p>
         <br />
         <ListOfStudentsToRender />

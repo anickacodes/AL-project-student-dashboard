@@ -1,6 +1,8 @@
 import { useState } from "react";
-import AllStudentCertifications from "./AllStudentCertifications";
+// import AllStudentCertifications from "./AllStudentCertifications";
 import "./IndividualStudentCard.css"
+import studentData from "../data/data.json";
+import StudentDetailsOpened from "./StudentDetailsOpened.jsx";
 
 const IndiviualStudentCard = ({ eachStudentObj }) => {
   const [individualStudentShowMore, setIndividualStudentShowMore] = useState(false);
@@ -10,8 +12,6 @@ const IndiviualStudentCard = ({ eachStudentObj }) => {
 
   const [showOneOnOne, setShowOneOnOne] = useState("Show More...")  
 // console.log(showOneOnOne)
-
-
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -25,7 +25,6 @@ const IndiviualStudentCard = ({ eachStudentObj }) => {
   function handleShowMoreToggle() {
     setIndividualStudentShowMore(!individualStudentShowMore)
   }
-
 
   function showingDetails () {
     setShowOneOnOne(!showOneOnOne)
@@ -43,8 +42,9 @@ const IndiviualStudentCard = ({ eachStudentObj }) => {
         <p>
           <em>{eachStudentObj.username}</em>
         </p>
-        <span>Birthday: {formatDate(eachStudentObj.dob)}</span> <br />
-        <div><strong>Cohort Start Date : {eachStudentObj.cohort.cohortStartDate}</strong> </div>
+       <p>Birthday:  <span>{formatDate(eachStudentObj.dob)}</span> </p>
+        <p>Cohort Start Date : <strong>{eachStudentObj.cohort.cohortStartDate}</strong> </p>
+       
         {/* <section>
           Resume:{" "}
           {eachStudentObj.certifications.resume ? (
@@ -75,7 +75,7 @@ const IndiviualStudentCard = ({ eachStudentObj }) => {
           </a>
         </section> */}
     
-        {/* <AllStudentCertifications /> */}
+      
         <a
         onClick={(syntheticE) => {
             // individualShowMore(!setIndividualShowMore)
@@ -85,10 +85,11 @@ const IndiviualStudentCard = ({ eachStudentObj }) => {
         {" "}
         {/* {individualStudentShowMore ?  {showOneOnOneSection} :  "Show More ..." } */}
         {individualStudentShowMore ?  
-       <h2>yolo</h2>
+     <h2>idk anymore</h2>
          :
          showOneOnOne}
       </a>
+      
       </div>
     
   );

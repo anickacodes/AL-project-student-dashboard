@@ -1,0 +1,37 @@
+filter dates and sort so it's in order
+
+
+a whole bunch of sentences 
+words
+letters 
+
+take it a piece at a time 
+
+features 
+
+deploy app
+readme
+Student List - Component : 
+l> On track Status 
+l>Additional details on student (Show More toggle)
+l>>1-1 section 
+
+Does the form work
+Count of students in data set
+Cohort Name on Side - clickabe : title changes
+L> Parse it 
+
+
+
+*WROTE A COUPLE LINES OF CODE : DID MY APP EXPLODE ? *
+
+iterate over datajson 
+
+
+when returning jsx elements, every thing should be in 1 tag 
+
+
+i want the people inside the lists , 
+
+i want when i click on the list, i see the people 
+

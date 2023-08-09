@@ -3,6 +3,7 @@
 import studentData from "../data/data.json";
 import { useState } from "react";
 import IndiviualStudentCard from "./IndiviualStudentCard";
+import StudentDetailsOpened from "./StudentDetailsOpened.jsx";
 
 
 
@@ -19,6 +20,7 @@ const ListOfStudentsToRender = () => {
        <div className="Student-Card">
      
         <IndiviualStudentCard eachStudentObj={eachStudentObj} />
+       
           </div>
       )
 

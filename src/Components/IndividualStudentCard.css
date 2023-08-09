@@ -6,3 +6,9 @@
     background-color: #66c2ff5c;
     padding: 3px;
 }
+
+.All-Students-Title {
+display: flexbox;
+/* overflow-wrap: break-word; */
+   
+}
