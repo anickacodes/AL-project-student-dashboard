@@ -1,28 +1,39 @@
+import { useState } from "react";
 import studentData from "../data/data.json";
 import "./CohortList.css";
 
-
-const CohortList = ({ setStudentArray }) => {
-  const classCodeSelection = (se) => {
-    console.log( se)
-    if (se === "All Students") {
-      setStudentArray(studentData);
+const CohortList = ({ studentArray, setStudentArray }) => {
+  const [filteredStudents, setFilteredStudents] = useState(studentData)
+  const classCodeSelection = (cohortCode) => {
+    
+    //when i click this , return filtered in new div
+    
+    if (cohortCode === "All Students") {
+     setFilteredStudents(filteredStudents)
+     console.log("otherfilter",setFilteredStudents);
     } else {
-      const filteredStudents = studentData.filter((eachStudent) => {
-        if (
-          se.replace(" ", "") === eachStudent.cohort.cohortCode
-        ) {
-          
+      const filteredStudents = studentArray.filter((eachStudent) => {
+        if (cohortCode.replace(" ", "") === eachStudent.cohort.cohortCode) {
           return eachStudent;
         }
       });
-      console.log(...filteredStudents);
+      console.log("filter", ...filteredStudents);
       // setStudentArray(...filteredStudents);
-      setStudentArray(filteredStudents);
+      setFilteredStudents(filteredStudents);
     }
-   
   };
 
+  const cohortCodes = [
+    "All Students",
+    "Winter 2026",
+    "Spring 2026",
+    "Summer 2026",
+    "Fall 2026",
+    "Winter 2025",
+    "Spring 2025",
+    "Summer 2025",
+    "Fall 2025",
+  ];
   return (
     <section id="class-list">
       <a href="#">
@@ -32,7 +43,7 @@ const CohortList = ({ setStudentArray }) => {
             classCodeSelection(syntheticE.target.innerText);
           }}
         >
-          All Students List{" "}
+          All Students List 
         </h2>{" "}
       </a>
       <a href="#">
@@ -57,41 +68,66 @@ const CohortList = ({ setStudentArray }) => {
       </a>
       <a href="#">
         {" "}
-        <h2 onClick={(syntheticE) => {
+        <h2
+          onClick={(syntheticE) => {
             classCodeSelection(syntheticE.target.innerText);
-          }}>Summer 2026 </h2>{" "}
+          }}
+        >
+          Summer 2026{" "}
+        </h2>{" "}
       </a>
       <a href="#">
         {" "}
-        <h2 onClick={(syntheticE) => {
+        <h2
+          onClick={(syntheticE) => {
             classCodeSelection(syntheticE.target.innerText);
-          }}>Spring 2026 </h2>{" "}
+          }}
+        >
+          Spring 2026{" "}
+        </h2>{" "}
       </a>
       <a href="#">
         {" "}
-        <h2 onClick={(syntheticE) => {
+        <h2
+          onClick={(syntheticE) => {
             classCodeSelection(syntheticE.target.innerText);
-          }}>Winter 2025 </h2>{" "}
+          }}
+        >
+          Winter 2025{" "}
+        </h2>{" "}
       </a>
       <a href="#">
         {" "}
-        <h2 onClick={(syntheticE) => {
+        <h2
+          onClick={(syntheticE) => {
             classCodeSelection(syntheticE.target.innerText);
-          }}>Spring 2025 </h2>{" "}
+          }}
+        >
+          Spring 2025{" "}
+        </h2>{" "}
       </a>
       <a href="#">
         {" "}
-        <h2 onClick={(syntheticE) => {
+        <h2
+          onClick={(syntheticE) => {
             classCodeSelection(syntheticE.target.innerText);
-          }}>Summer 2025 </h2>{" "}
+          }}
+        >
+          Summer 2025{" "}
+        </h2>{" "}
       </a>
       <a href="#">
         {" "}
-        <h2 onClick={(syntheticE) => {
+        <h2
+          onClick={(syntheticE) => {
             classCodeSelection(syntheticE.target.innerText);
-          }}>Fall 2025 </h2>{" "}
+          }}
+        >
+          Fall 2025{" "}
+        </h2>{" "}
       </a>
     </section>
+    
   );
 };
 

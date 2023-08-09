@@ -16,10 +16,16 @@ const StudentDetailsOpened = studentData.filter((eachStudentCert) => {
     // eachStudentCert.certifications === true &&
     eachStudentCert.codewars.current.total > 600
   ) {
-    return eachStudentCert;
+    const onTrackStudent = eachStudentCert;
+    return onTrackStudent;
+  } else {
+    const offTrackStudents = eachStudentCert;
+    // console.log("off track" ,offTrackStudents)
+    // console.log("off id track" ,offTrackStudents.id)
+    return offTrackStudents;
   }
 });
 
-console.log(StudentDetailsOpened);
+// console.log("all on track", StudentDetailsOpened);
 
 export default StudentDetailsOpened;
