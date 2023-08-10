@@ -65,9 +65,14 @@ const CohortList = () => {
     const fellow = cohort.find((f) => f.fellowId === fellowId);
     return fellow ? fellow.status : "Unknown";
   };
-  
+  filteredCohorts.sort((a, b) => {
+    const startDateA = new Date(a.cohort.cohortStartDate);
+    const startDateB = new Date(b.cohort.cohortStartDate);
+    return startDateA - startDateB;
+  });
   const cohortElements = filteredCohorts.map((eachFellowObj) => (
     <div key={eachFellowObj.id}>
+      <img src={eachFellowObj.profilePhoto} />
       <h4>{eachFellowObj.names.preferredName}</h4>
       <p>Username: {eachFellowObj.username}</p>
       <p>Date of Birth: {formatDate(eachFellowObj.dob)}</p>
@@ -114,10 +119,17 @@ const CohortList = () => {
 
   return (
     <>
-      <div className="cohort-text">
-        <h2> Choose a Class by Start Date {allCohorts} </h2>
-      </div>
-      <h3 className="cohort-List"> {cohortElements} </h3>
+      
+
+        <div className="cohort-text">
+          <h2> Choose a Class by Start Date {allCohorts} </h2>
+        </div>
+
+        <div className="cohort-List">
+          <h3> {cohortElements} </h3>
+        </div>
+        
+ 
     </>
   );
 };
