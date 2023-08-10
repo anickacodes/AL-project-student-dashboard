@@ -15,7 +15,10 @@ section {
 }
 
 .expanded-info{
-
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+border: 1px dashed green;
+background-color: antiquewhite;
 }
 /* #winter26Date, #winter25Date {
     color: purple;

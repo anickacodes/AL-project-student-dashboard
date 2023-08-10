@@ -12,7 +12,8 @@ html {
 
 main {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template: "b b a" auto
+    "b b c" 3em / 30% 360px 1fr;
 }
 
 header {

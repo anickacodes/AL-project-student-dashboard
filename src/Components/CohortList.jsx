@@ -5,8 +5,16 @@ import "./CohortList.css";
 const CohortList = () => {
   const [filteredCohorts, setFilteredCohorts] = useState(studentData);
 
-  const cohort = filteredCohorts.map((eachFellowObj) => {
-    eachFellowObj.certifications === true;
+  const cohort = [];
+  filteredCohorts.forEach((eachFellowObj) => {
+    const certifications = eachFellowObj.certifications;
+    const offTrack = Object.values(certifications).some(
+      (value) => value === false
+    );
+    cohort.push({
+      fellowId: eachFellowObj.id,
+      status: offTrack ? "Off Track" : "On Track",
+    });
   });
 
   const renderCohorts = [
@@ -48,41 +56,59 @@ const CohortList = () => {
   const [expandedFellowId, setExpandedFellowId] = useState(null);
 
   const expandShowMore = (eachFellowObjId) => {
-   
-      setExpandedFellowId(expandedFellowId === eachFellowObjId ? null : eachFellowObjId )
- 
-    }
-  
+    setExpandedFellowId(
+      expandedFellowId === eachFellowObjId ? null : eachFellowObjId
+    );
+  };
 
+  const getFellowStatus = (fellowId) => {
+    const fellow = cohort.find((f) => f.fellowId === fellowId);
+    return fellow ? fellow.status : "Unknown";
+  };
+  
   const cohortElements = filteredCohorts.map((eachFellowObj) => (
     <div key={eachFellowObj.id}>
       <h4>{eachFellowObj.names.preferredName}</h4>
       <p>Username: {eachFellowObj.username}</p>
       <p>Date of Birth: {formatDate(eachFellowObj.dob)}</p>
       <button onClick={() => expandShowMore(eachFellowObj.id)}>
-        {expandedFellowId === eachFellowObj.id ? "Show Less" : "Show More..."}</button>
-        {expandedFellowId === eachFellowObj.id && (
-        <div className="expanded-info">
-            <p>Additional Information for {eachFellowObj.names.preferredName}</p>
-         {/* Codewars Section */}
-        <h5>Codewars</h5>
-        <p>Total: {eachFellowObj.codewars.current.total}</p>
-        <p>Last Week: {eachFellowObj.codewars.current.lastWeek}</p>
+        {expandedFellowId === eachFellowObj.id ? "Show Less" : "Show More..."}
+      </button>
+      {expandedFellowId === eachFellowObj.id && (
+        <div className="expanded">
+          <p>Additional Information for {eachFellowObj.names.preferredName}</p>
+          <br />
+          <div className="expanded-info">
+            <section className="codewars-section">
+              <h5>Codewars</h5>
+              <p>Current Total: {eachFellowObj.codewars.current.total}</p>
+              <p>Last Week: {eachFellowObj.codewars.current.lastWeek}</p>
+              <p>Goal: {eachFellowObj.codewars.goal.total}</p>
+            </section>
 
-        {/* Certifications Section */}
-        <h5>Certifications</h5>
-        <p>Resume: {eachFellowObj.certifications.resume ? "Yes" : "No"}</p>
-        <p>LinkedIn: {eachFellowObj.certifications.linkedin ? "Yes" : "No"}</p>
-        {/* Add more certification checks here... */}
+            <section className="certificates-section">
+              <h5>Certifications</h5>
+              <p>Resume: {eachFellowObj.certifications.resume ? "✅" : "❌"}</p>
+              <p>
+                LinkedIn: {eachFellowObj.certifications.linkedin ? "✅" : "❌"}
+              </p>
+              <p>Github: {eachFellowObj.certifications.github ? "✅" : "❌"}</p>
+              <p>
+                Mock Interview:{" "}
+                {eachFellowObj.certifications.mockInterview ? "✅" : "❌"}
+              </p>
+            </section>
 
-        {/* Scores Section */}
-        <h5>Scores</h5>
-        <p>Assignments: {eachFellowObj.cohort.scores.assignments}</p>
-        <p>Projects: {eachFellowObj.cohort.scores.projects}</p>
-        <p>Assessments: {eachFellowObj.cohort.scores.assessments}</p>
-         
+            <section className="scores-section">
+              <h5>Scores</h5>
+              <p>Assignments: {eachFellowObj.cohort.scores.assignments}</p>
+              <p>Projects: {eachFellowObj.cohort.scores.projects}</p>
+              <p>Assessments: {eachFellowObj.cohort.scores.assessments}</p>
+            </section>
+            <h4>Status: {getFellowStatus(eachFellowObj.id)}</h4>
+          </div>
         </div>
-         )}
+      )}
     </div>
   ));
 
@@ -90,7 +116,7 @@ const CohortList = () => {
     <>
       <div className="cohort-text">
         <h2> Choose a Class by Start Date {allCohorts} </h2>
-      </div> 
+      </div>
       <h3 className="cohort-List"> {cohortElements} </h3>
     </>
   );
