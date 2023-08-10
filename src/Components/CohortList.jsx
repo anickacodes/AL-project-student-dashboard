@@ -1,137 +1,99 @@
-import { useState } from "react";
 import studentData from "../data/data.json";
+import { useState } from "react";
 import "./CohortList.css";
 
-const CohortList = ({ studentArray, setStudentArray }) => {
-  const [filteredStudents, setFilteredStudents] = useState(studentData)
-  const classCodeSelection = (cohortCode) => {
-    
-    //when i click this , return filtered in new div
-    
-    if (cohortCode === "All Students") {
-     setFilteredStudents(filteredStudents)
-     console.log("otherfilter",setFilteredStudents);
-    } else {
-      const filteredStudents = studentArray.filter((eachStudent) => {
-        if (cohortCode.replace(" ", "") === eachStudent.cohort.cohortCode) {
-          return eachStudent;
-        }
-      });
-      console.log("filter", ...filteredStudents);
-      // setStudentArray(...filteredStudents);
-      setFilteredStudents(filteredStudents);
-    }
-  };
+const CohortList = () => {
+  const [filteredCohorts, setFilteredCohorts] = useState(studentData);
 
-  const cohortCodes = [
+  const cohort = filteredCohorts.map((eachFellowObj) => {
+    eachFellowObj.certifications === true;
+  });
+
+  const renderCohorts = [
     "All Students",
-    "Winter 2026",
-    "Spring 2026",
-    "Summer 2026",
-    "Fall 2026",
-    "Winter 2025",
-    "Spring 2025",
-    "Summer 2025",
-    "Fall 2025",
+    ...new Set(
+      filteredCohorts.map((eachCohort) => eachCohort.cohort.cohortCode)
+    ),
   ];
-  return (
-    <section id="class-list">
-      <a href="#">
-        {" "}
-        <h2
-          onClick={(syntheticE) => {
-            classCodeSelection(syntheticE.target.innerText);
-          }}
-        >
-          All Students List 
-        </h2>{" "}
-      </a>
-      <a href="#">
-        {" "}
-        <h2
-          onClick={(syntheticE) => {
-            classCodeSelection(syntheticE.target.innerText);
-          }}
-        >
-          Winter 2026{" "}
-        </h2>{" "}
-      </a>
-      <a href="#">
-        {" "}
-        <h2
-          onClick={(syntheticE) => {
-            classCodeSelection(syntheticE.target.innerText);
-          }}
-        >
-          Spring 2026{" "}
-        </h2>{" "}
-      </a>
-      <a href="#">
-        {" "}
-        <h2
-          onClick={(syntheticE) => {
-            classCodeSelection(syntheticE.target.innerText);
-          }}
-        >
-          Summer 2026{" "}
-        </h2>{" "}
-      </a>
-      <a href="#">
-        {" "}
-        <h2
-          onClick={(syntheticE) => {
-            classCodeSelection(syntheticE.target.innerText);
-          }}
-        >
-          Spring 2026{" "}
-        </h2>{" "}
-      </a>
-      <a href="#">
-        {" "}
-        <h2
-          onClick={(syntheticE) => {
-            classCodeSelection(syntheticE.target.innerText);
-          }}
-        >
-          Winter 2025{" "}
-        </h2>{" "}
-      </a>
-      <a href="#">
-        {" "}
-        <h2
-          onClick={(syntheticE) => {
-            classCodeSelection(syntheticE.target.innerText);
-          }}
-        >
-          Spring 2025{" "}
-        </h2>{" "}
-      </a>
-      <a href="#">
-        {" "}
-        <h2
-          onClick={(syntheticE) => {
-            classCodeSelection(syntheticE.target.innerText);
-          }}
-        >
-          Summer 2025{" "}
-        </h2>{" "}
-      </a>
-      <a href="#">
-        {" "}
-        <h2
-          onClick={(syntheticE) => {
-            classCodeSelection(syntheticE.target.innerText);
-          }}
-        >
-          Fall 2025{" "}
-        </h2>{" "}
-      </a>
+
+  const allCohorts = renderCohorts.map((cohortText) => (
+    <section
+      key={cohortText}
+      onClick={(se) => handleCohortSelector(cohortText)}
+    >
+      {" "}
+      {cohortText}{" "}
     </section>
-    
+  ));
+
+  function handleCohortSelector(clickedCohortLabel) {
+    if (clickedCohortLabel === "All Students") {
+      setFilteredCohorts(studentData); // Show all students when "All Students" is clicked
+    } else {
+      const filteredLists = studentData.filter((ec) => {
+        return ec.cohort.cohortCode === clickedCohortLabel;
+      });
+      setFilteredCohorts([...filteredLists]);
+    }
+  }
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-us", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
+  const [expandedFellowId, setExpandedFellowId] = useState(null);
+
+  const expandShowMore = (eachFellowObjId) => {
+   
+      setExpandedFellowId(expandedFellowId === eachFellowObjId ? null : eachFellowObjId )
+ 
+    }
+  
+
+  const cohortElements = filteredCohorts.map((eachFellowObj) => (
+    <div key={eachFellowObj.id}>
+      <h4>{eachFellowObj.names.preferredName}</h4>
+      <p>Username: {eachFellowObj.username}</p>
+      <p>Date of Birth: {formatDate(eachFellowObj.dob)}</p>
+      <button onClick={() => expandShowMore(eachFellowObj.id)}>
+        {expandedFellowId === eachFellowObj.id ? "Show Less" : "Show More..."}</button>
+        {expandedFellowId === eachFellowObj.id && (
+        <div className="expanded-info">
+            <p>Additional Information for {eachFellowObj.names.preferredName}</p>
+         {/* Codewars Section */}
+        <h5>Codewars</h5>
+        <p>Total: {eachFellowObj.codewars.current.total}</p>
+        <p>Last Week: {eachFellowObj.codewars.current.lastWeek}</p>
+
+        {/* Certifications Section */}
+        <h5>Certifications</h5>
+        <p>Resume: {eachFellowObj.certifications.resume ? "Yes" : "No"}</p>
+        <p>LinkedIn: {eachFellowObj.certifications.linkedin ? "Yes" : "No"}</p>
+        {/* Add more certification checks here... */}
+
+        {/* Scores Section */}
+        <h5>Scores</h5>
+        <p>Assignments: {eachFellowObj.cohort.scores.assignments}</p>
+        <p>Projects: {eachFellowObj.cohort.scores.projects}</p>
+        <p>Assessments: {eachFellowObj.cohort.scores.assessments}</p>
+         
+        </div>
+         )}
+    </div>
+  ));
+
+  return (
+    <>
+      <div className="cohort-text">
+        <h2> Choose a Class by Start Date {allCohorts} </h2>
+      </div> 
+      <h3 className="cohort-List"> {cohortElements} </h3>
+    </>
   );
 };
-
-//as we click, filter out what matches and map that as a a return
-//useState - rerenders
 
 export default CohortList;

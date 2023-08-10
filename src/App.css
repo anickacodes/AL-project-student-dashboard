@@ -4,18 +4,24 @@
 }
 
 html {
-    border: 3px solid blue ;
+    border: 3px solid blue;
     margin: 10px;
     padding: 7px;
-    
+
 }
+
 main {
-    display:grid;
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
 
 header {
+    background-color: rgba(42, 11, 70, 0.702);
+    text-shadow: 1px 2px 11px rgb(103, 188, 234);
     text-align: center;
+    color: bisque;
+    margin: 20px;
+    padding: 10px;
 }
 
 span {
@@ -25,4 +31,3 @@ span {
 .Student-Card span {
     color: ivory;
 }
-
