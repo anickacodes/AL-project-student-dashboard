@@ -4,8 +4,9 @@ import "./CohortList.css";
 
 const CohortList = () => {
   const [filteredCohorts, setFilteredCohorts] = useState(studentData);
-  const [totalStudents, setTotalStudents] = useState(studentData.length)
-  const [titlePage, setTitlePage] = useState("")
+  const [totalStudents, setTotalStudents] = useState(studentData.length);
+  const [titlePage, setTitlePage] = useState("");
+
   const cohort = [];
   filteredCohorts.forEach((eachFellowObj) => {
     const certifications = eachFellowObj.certifications;
@@ -24,27 +25,44 @@ const CohortList = () => {
       filteredCohorts.map((eachCohort) => eachCohort.cohort.cohortCode)
     ),
   ];
+  const formatCohortLabel = (cohortCode) => {
+    const seasonNames = {
+      Winter: "Winter",
+      Spring: "Spring",
+      Summer: "Summer",
+      Fall: "Fall",
+    };
+  
+    const season = cohortCode.slice(0, -4);
+    const year = cohortCode.slice(-4);
+  
+    return `${seasonNames[season]} ${year}`;
+  };
+ 
 
   const allCohorts = renderCohorts.map((cohortText) => (
     <section
       key={cohortText}
       onClick={(se) => handleCohortSelector(cohortText)}
     >
-      {" "}
-      {cohortText}{" "}
+      {cohortText === "All Students"
+        ? cohortText
+        : formatCohortLabel(cohortText)}
     </section>
   ));
 
   function handleCohortSelector(clickedCohortLabel) {
     if (clickedCohortLabel === "All Students") {
-      setFilteredCohorts(studentData); // Show all students when "All Students" is clicked
-      setTotalStudents(studentData.length)
+      setFilteredCohorts(studentData); 
+      setTitlePage(clickedCohortLabel);
+      setTotalStudents(studentData.length);
     } else {
       const filteredLists = studentData.filter((ec) => {
         return ec.cohort.cohortCode === clickedCohortLabel;
       });
       setFilteredCohorts([...filteredLists]);
-      setTotalStudents(filteredLists.length)
+      setTitlePage(clickedCohortLabel);
+      setTotalStudents(filteredLists.length);
     }
   }
 
@@ -73,12 +91,17 @@ const CohortList = () => {
     const startDateB = new Date(b.cohort.cohortStartDate);
     return startDateA - startDateB;
   });
+
   const cohortElements = filteredCohorts.map((eachFellowObj) => (
     <div key={eachFellowObj.id}>
       <img src={eachFellowObj.profilePhoto} />
       <h4>{eachFellowObj.names.preferredName}</h4>
-      <p>Username: <span> {eachFellowObj.username}</span> </p>
-      <p>Date of Birth: <span> {formatDate(eachFellowObj.dob)} </span> </p>
+      <p>
+        Username: <span> {eachFellowObj.username}</span>{" "}
+      </p>
+      <p>
+        Date of Birth: <span> {formatDate(eachFellowObj.dob)} </span>{" "}
+      </p>
       <button onClick={() => expandShowMore(eachFellowObj.id)}>
         {expandedFellowId === eachFellowObj.id ? "Show Less" : "Show More..."}
       </button>
@@ -88,7 +111,7 @@ const CohortList = () => {
           <br />
           <div className="expanded-info">
             <section className="codewars-section">
-              <h5> Codewars  </h5>
+              <h5> Codewars </h5>
               <p>Current Total: {eachFellowObj.codewars.current.total}</p>
               <p>Last Week: {eachFellowObj.codewars.current.lastWeek}</p>
               <p>Goal: {eachFellowObj.codewars.goal.total}</p>
@@ -122,18 +145,18 @@ const CohortList = () => {
 
   return (
     <>
-      
+      <div className="cohort-text">
+        <h2> Choose a Class by Start Date {allCohorts} </h2>
+      </div>
 
-        <div className="cohort-text">
-          <h2> Choose a Class by Start Date {allCohorts} </h2>
-        </div>
-
-        <div className="cohort-List">
-        <h3> Total Students <span>{totalStudents}</span> </h3>
-          {cohortElements} 
-        </div>
-        
- 
+      <div className="cohort-List">
+        <h1>  {formatCohortLabel(titlePage) || "Cohort List"}</h1>
+        <h3>
+          {" "}
+          Total Students <span>{totalStudents}</span>{" "}
+        </h3>
+        {cohortElements}
+      </div>
     </>
   );
 };

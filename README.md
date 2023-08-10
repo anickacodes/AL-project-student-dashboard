@@ -13,20 +13,22 @@ _as well as add comments to those students._ *not active*
 >https://trello.com/b/xbkrcU0Z/mod-3-student-dashboard-project [Trello]
 
 
- **Student list.** On Load, The Home page shows a list of all students. Displayed for each student is their name, username (i.e., email), birthday, and profile photo.
+✅ **Student list.** On Load, The Home page shows a list of all students. Displayed for each student is their name, username (i.e., email), birthday, and profile photo.
 
- **On-track status.** Each student is marked as either "On Track" or "Off Track." A student is "On Track" if the following is true about them:
+ ✅ **On-track status.** Each student is marked as either "On Track" or "Off Track." A student is "On Track" if the following is true about them:
    - The student has a resume certification (e.g. `certifications.resume` is `true`).
    - The student has a LinkedIn certification (e.g. `certifications.linkedin` is `true`).
    - The student has a GitHub certification (e.g. `certifications.github` is `true`).
    - The student has a mock interview certification (e.g. `certifications.mockInterview` is `true`).
    - The student has a current CodeWars score that is over 600.
 
- **Additional student details.** A button on each student's profile hides and shows additional information when clicked. This feature includes the following:
+ ✅ **Additional student details.** A button on each student's profile hides and shows additional information when clicked. This feature includes the following:
    - The text of the button changes depending on whether it is open or closed.
    - Opening the details section for one student does not open it for every other student.
 
+
    - The details section includes the percentages for all scores, properly formatted as percentages.
+
 
    - The details section includes whether or not the student has received certain certifications. Instead of showing "true" or "false" for certifications, show an emoji or icon depending on the certification status.
 
@@ -45,17 +47,17 @@ _as well as add comments to those students._ *not active*
 *not active*
 
 
-1. **Student list count.** The Home page should also include a count of how many students are within the data set.
+✅  **Student list count.** The Home page includes a count of how many students are within the data set.
 
-**Unique list of cohorts.** The Home page includes a unique list of cohorts on the page.
-
-
-1. **Human-readable cohort names.** The list of cohorts should be human-readable (e.g. "Winter 2026" instead of "Winter2026") and ordered by time. *not active*
-
- **Clickable cohorts.** When one of the cohorts is clicked from the cohort list, the students shown on the page changes and only those students in the cohort are shown.
+✅  **Unique list of cohorts.** The Home page includes a unique list of cohorts on the page.
 
 
-1. **Cohort title change.** When one of the cohorts is clicked from the cohort list, a heading on the page should change to display what cohort is being shown. The student count should update to reflect this change. *not active*
+✅  **Human-readable cohort names.** The list of cohorts is human-readable (e.g. "Winter 2026" instead of "Winter2026") and ordered by time.
+
+✅  **Clickable cohorts.** When one of the cohorts is clicked from the cohort list, the students shown on the page changes and only those students in the cohort are shown.
+
+
+✅ **Cohort title change.** When one of the cohorts is clicked from the cohort list, a heading on the page should change to display what cohort is being shown. The student count should update to reflect this change.
 
 
 
