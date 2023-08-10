@@ -16,6 +16,7 @@ function App() {
         </header>
       </div>
       <main>
+       
         <CohortList />
       </main>
     </>

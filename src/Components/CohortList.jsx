@@ -4,7 +4,8 @@ import "./CohortList.css";
 
 const CohortList = () => {
   const [filteredCohorts, setFilteredCohorts] = useState(studentData);
-
+  const [totalStudents, setTotalStudents] = useState(studentData.length)
+  const [titlePage, setTitlePage] = useState("")
   const cohort = [];
   filteredCohorts.forEach((eachFellowObj) => {
     const certifications = eachFellowObj.certifications;
@@ -37,11 +38,13 @@ const CohortList = () => {
   function handleCohortSelector(clickedCohortLabel) {
     if (clickedCohortLabel === "All Students") {
       setFilteredCohorts(studentData); // Show all students when "All Students" is clicked
+      setTotalStudents(studentData.length)
     } else {
       const filteredLists = studentData.filter((ec) => {
         return ec.cohort.cohortCode === clickedCohortLabel;
       });
       setFilteredCohorts([...filteredLists]);
+      setTotalStudents(filteredLists.length)
     }
   }
 
@@ -74,8 +77,8 @@ const CohortList = () => {
     <div key={eachFellowObj.id}>
       <img src={eachFellowObj.profilePhoto} />
       <h4>{eachFellowObj.names.preferredName}</h4>
-      <p>Username: {eachFellowObj.username}</p>
-      <p>Date of Birth: {formatDate(eachFellowObj.dob)}</p>
+      <p>Username: <span> {eachFellowObj.username}</span> </p>
+      <p>Date of Birth: <span> {formatDate(eachFellowObj.dob)} </span> </p>
       <button onClick={() => expandShowMore(eachFellowObj.id)}>
         {expandedFellowId === eachFellowObj.id ? "Show Less" : "Show More..."}
       </button>
@@ -85,7 +88,7 @@ const CohortList = () => {
           <br />
           <div className="expanded-info">
             <section className="codewars-section">
-              <h5>Codewars</h5>
+              <h5> Codewars  </h5>
               <p>Current Total: {eachFellowObj.codewars.current.total}</p>
               <p>Last Week: {eachFellowObj.codewars.current.lastWeek}</p>
               <p>Goal: {eachFellowObj.codewars.goal.total}</p>
@@ -126,7 +129,8 @@ const CohortList = () => {
         </div>
 
         <div className="cohort-List">
-          <h3> {cohortElements} </h3>
+        <h3> Total Students <span>{totalStudents}</span> </h3>
+          {cohortElements} 
         </div>
         
  

@@ -22,6 +22,10 @@ section {
 border: 1px dashed green;
 background-color: antiquewhite;
 }
+
+h5, h4 {
+    color: brown;
+}
 /* #winter26Date, #winter25Date {
     color: purple;
 
